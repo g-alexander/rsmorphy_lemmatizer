@@ -1,4 +1,4 @@
-# Regex Replacer
+# RSMorphy Lemmatizer
 
 This is simple package for lemmatize (word normal form) russian words.
 Package based on rsmorphy: https://github.com/g-alexander/rsmorphy
