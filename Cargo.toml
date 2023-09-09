@@ -1,0 +1,15 @@
+[package]
+name = "rsmorphy_lemmatizer"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+name = "rsmorphy_lemmatizer"
+crate-type = ["cdylib"]
+
+[dependencies]
+rsmorphy = { git = "https://github.com/g-alexander/rsmorphy.git" }
+pyo3 = {version = "0.19.2", features = ["extension-module"]}
+regex = "1.9.3"
+rayon = "1.5"

@@ -1,0 +1,5 @@
+/target
+/build
+/rsmorphy_lemmatizer.egg-info
+/dist
+Cargo.lock
