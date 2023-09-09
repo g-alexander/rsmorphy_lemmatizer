@@ -1,12 +1,15 @@
 from .rsmorphy_lemmatizer import RSMorphyLemmatizer
 from sklearn.base import BaseEstimator, TransformerMixin
-from typing import List, Tuple
+from typing import List
+import os
 
 
 class RSMorphyTransformer(TransformerMixin, BaseEstimator):
-    def __init__(self, dict_path="./rsmorphy_dict_ru", stop_words=(), name_token="[Name]", surname_token="[Surn]",
+    def __init__(self, dict_path=None, stop_words=(), name_token="[Name]", surname_token="[Surn]",
                  patronymic_token="[Patr]", replace_fio=True, n_jobs=1, split_re="\\s"):
         super().__init__()
+        if dict_path is None:
+            dict_path = os.path.join(__path__[0], 'rsmorphy_dict_ru')
         self.transformer = RSMorphyLemmatizer(dict_path, set(stop_words), name_token, surname_token,
                                               patronymic_token, replace_fio, n_jobs)
         self.dict_path = dict_path
