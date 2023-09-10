@@ -11,7 +11,7 @@ class RSMorphyTransformer(TransformerMixin, BaseEstimator):
         if dict_path is None:
             dict_path = os.path.join(__path__[0], 'rsmorphy_dict_ru')
         self.transformer = RSMorphyLemmatizer(dict_path, set(stop_words), name_token, surname_token,
-                                              patronymic_token, replace_fio, n_jobs)
+                                              patronymic_token, replace_fio, n_jobs, split_re)
         self.dict_path = dict_path
         self.stop_words = set(stop_words)
         self.name_token = name_token
@@ -19,6 +19,7 @@ class RSMorphyTransformer(TransformerMixin, BaseEstimator):
         self.patronymic_token = patronymic_token
         self.replace_fio = replace_fio
         self.n_jobs = n_jobs
+        self.split_re = split_re
 
     def fit(self, X, y=None):
         return self
@@ -38,7 +39,8 @@ class RSMorphyTransformer(TransformerMixin, BaseEstimator):
             'surname_token': self.surname_token,
             'patronymic_token': self.patronymic_token,
             'replace_fio': self.replace_fio,
-            'n_jobs': self.n_jobs
+            'n_jobs': self.n_jobs,
+            'split_re': self.split_re
         }
 
     def __setstate__(self, state):
@@ -49,6 +51,7 @@ class RSMorphyTransformer(TransformerMixin, BaseEstimator):
         self.patronymic_token = state['patronymic_token']
         self.replace_fio = state['replace_fio']
         self.n_jobs = state['n_jobs']
+        self.split_re = state['split_re']
         self.transformer = RSMorphyLemmatizer(self.dict_path, self.stop_words, self.name_token, self.surname_token,
-                                              self.patronymic_token, self.replace_fio, self.n_jobs)
+                                              self.patronymic_token, self.replace_fio, self.n_jobs, self.split_re)
 
