@@ -108,7 +108,7 @@ impl RSMorphyLemmatizer {
 }
 
 #[pymodule]
-fn rsmorphy_lemmatizer(_: Python, m: &PyModule) -> PyResult<()> {
-    m.add_class::<RSMorphyLemmatizer>()?;
-    Ok(())
+mod rsmorphy_lemmatizer {
+    #[pymodule_export]
+    use super::RSMorphyLemmatizer;
 }

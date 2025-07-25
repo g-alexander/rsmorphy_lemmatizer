@@ -3,11 +3,14 @@ requires = ["setuptools", "wheel", "setuptools-rust"]
 
 [project]
 name = "rsmorphy_lemmatizer"
-version = "0.1.3"
+version = "0.1.5"
 authors = [{name = "GAlexander", email = "g.alexander.box@gmail.com"}]
 description = "Simple class for lemmatize (word normal form) russian words, based on rsmorphy. Support scikit-learn transformer interface."
 readme = "README.md"
-requires-python = ">=3.7, <3.11.0"
+requires-python = ">=3.8, <3.14.0"
+dependencies = [
+    "scikit-learn"
+]
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
